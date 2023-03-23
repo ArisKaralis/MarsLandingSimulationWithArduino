@@ -11,6 +11,9 @@ with open("sensor_data.txt", "a") as file:
         while True:
             data = ser.readline().decode().strip()
 
+            # Combine the timestamp and sensor data
+            timestamped_data = f"{timestamp} - {data}"
+            
             file.write(data + "\n")
             print(data)
 
