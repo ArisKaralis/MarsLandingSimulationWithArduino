@@ -1,0 +1,16 @@
+## EDL Stages
+
+1. Start: Atmospheric Entry (0min)
+2. Peak Heating (80s)
+3. Peak Deceleration (90s)
+4. Guided Entry
+5. Parachute Deploy (240s, 9-13km, 420m/s)
+6. Heat Shield Separation (260s, 7-11km, 160m/s)
+7. Radar Lock ( 290s, 7-8km, 105m/s)
+8. Terrain Relative(330s, 4km, 89m/s)
+9. Backshell Seperation (350s, 2.1km, 89m/s)
+10. Powered Descent
+11. Last 3 Stages:
+    1. Rover Separation (21.3m, 0.75m/s)
+    2. Mobility Deploy (20.7-14.5m, 0.75m/s)
+    3. Touchdown (410s, 0.75m/s vertical)
