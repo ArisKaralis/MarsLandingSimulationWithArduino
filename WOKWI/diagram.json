@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "author": "Aristeidis Karalis",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": -166.2, "left": -16.4, "attrs": {} },
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 46.64, "left": 258.27, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -208.92,
+      "left": 504.86,
+      "attrs": { "distance": "2" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -199.2,
+      "left": 443.4,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -166.5,
+      "left": 221.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -81.6,
+      "left": 373.85,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "imu1",
+      "top": -79.29,
+      "left": 425.72,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r5",
+      "top": -4.8,
+      "left": 268.25,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -81.6,
+      "left": 364.25,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -81.6,
+      "left": 345.16,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": -159.2,
+      "left": 365.9,
+      "attrs": { "common": "cathode" }
+    }
+  ],
+  "connections": [
+    [ "mega:5V", "bb1:bp.1", "red", [ "v16.56", "h-182.84", "v-224.67", "h-1.33" ] ],
+    [ "mega:GND.2", "bb1:bn.1", "black", [ "v28.56", "h-205.92", "v-226" ] ],
+    [ "bb1:63t.e", "bb1:bn.50", "black", [ "v0" ] ],
+    [ "bb1:60t.e", "bb1:bp.49", "red", [ "v0" ] ],
+    [ "bb1:61t.d", "mega:3", "orange", [ "v0.12", "h66.41", "v162.25", "h-440.93" ] ],
+    [ "bb1:62t.c", "mega:4", "orange", [ "v1.13", "h65.4", "v176.56", "h-454.29" ] ],
+    [ "imu1:VCC", "bb1:bp.44", "red", [ "v0" ] ],
+    [ "imu1:GND", "bb1:bn.45", "black", [ "v0" ] ],
+    [ "imu1:SCL", "mega:SCL", "violet", [ "v26.45", "h-104.25" ] ],
+    [ "imu1:SDA", "mega:SDA", "violet", [ "v32.59", "h-103.85" ] ],
+    [ "bb1:49t.e", "bb1:bn.47", "black", [ "v19.21", "h85.62", "v-0.58" ] ],
+    [ "bb1:50t.e", "bb1:bp.48", "red", [ "v11.13", "h84.09" ] ],
+    [ "bb1:31b.g", "mega:A0", "#8f4814", [ "h-23.58", "v282.41", "h-75.95" ] ],
+    [ "bb1:34b.j", "bb1:bp.27", "red", [ "v0" ] ],
+    [ "bb1:33b.j", "bb1:bn.26", "black", [ "v0" ] ],
+    [ "bb1:41b.j", "mega:8", "green", [ "v94.79", "h41.67" ] ],
+    [ "bb1:40t.e", "bb1:bn.32", "black", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "bb1:60t.a", "", [ "$bb" ] ],
+    [ "ultrasonic1:TRIG", "bb1:61t.a", "", [ "$bb" ] ],
+    [ "ultrasonic1:ECHO", "bb1:62t.a", "", [ "$bb" ] ],
+    [ "ultrasonic1:GND", "bb1:63t.a", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:42t.b", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:42b.f", "", [ "$bb" ] ],
+    [ "imu1:INT", "bb1:52b.i", "", [ "$bb" ] ],
+    [ "imu1:AD0", "bb1:51b.i", "", [ "$bb" ] ],
+    [ "imu1:XCL", "bb1:50b.i", "", [ "$bb" ] ],
+    [ "imu1:XDA", "bb1:49b.i", "", [ "$bb" ] ],
+    [ "imu1:SDA", "bb1:48b.i", "", [ "$bb" ] ],
+    [ "imu1:SCL", "bb1:47b.i", "", [ "$bb" ] ],
+    [ "imu1:GND", "bb1:46b.i", "", [ "$bb" ] ],
+    [ "imu1:VCC", "bb1:45b.i", "", [ "$bb" ] ],
+    [ "r5:1", "bb1:31b.h", "", [ "$bb" ] ],
+    [ "r5:2", "bb1:bn.25", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:41t.b", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:41b.f", "", [ "$bb" ] ],
+    [ "r3:1", "bb1:39t.b", "", [ "$bb" ] ],
+    [ "r3:2", "bb1:39b.f", "", [ "$bb" ] ],
+    [ "rgb1:R", "bb1:39t.a", "", [ "$bb" ] ],
+    [ "rgb1:COM", "bb1:40t.b", "", [ "$bb" ] ],
+    [ "rgb1:G", "bb1:41t.a", "", [ "$bb" ] ],
+    [ "rgb1:B", "bb1:42t.a", "", [ "$bb" ] ],
+    [ "bb1:39b.j", "mega:7", "blue", [ "v104.97", "h73.87" ] ],
+    [ "bb1:42b.j", "mega:9", "red", [ "v85.34", "h22.57" ] ],
+    [ "bz1:1", "bb1:49t.a", "", [ "$bb" ] ],
+    [ "bz1:2", "bb1:50t.a", "", [ "$bb" ] ],
+    [ "ldr1:VCC", "bb1:34b.f", "", [ "$bb" ] ],
+    [ "ldr1:GND", "bb1:33b.f", "", [ "$bb" ] ],
+    [ "ldr1:DO", "bb1:32b.f", "", [ "$bb" ] ],
+    [ "ldr1:AO", "bb1:31b.f", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}
