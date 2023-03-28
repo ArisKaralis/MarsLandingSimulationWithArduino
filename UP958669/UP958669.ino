@@ -1,13 +1,12 @@
 #include <MPU6050_tockn.h>
-
 #include <NewPing.h>
 #include <Wire.h>
 
 MPU6050 mpu6050(Wire);
 
 // Define pins for HC-SR04 sensor
-#define TRIGGER_PIN 4
-#define ECHO_PIN 3
+#define TRIGGER_PIN 3
+#define ECHO_PIN 4
 
 // Define pins for LED lights
 
@@ -48,22 +47,6 @@ void setup()
   pinMode(ECHO_PIN, INPUT);
   Serial.begin(9600);
 
-  // // Set LED pins as output and turn them off initially
-  // pinMode(BLUE_PIN, OUTPUT);
-  // digitalWrite(BLUE_PIN, LOW);
-
-  // pinMode(GREEN_PIN, OUTPUT);
-  // digitalWrite(GREEN_PIN, LOW);
-
-  // pinMode(YELLOW_PIN, OUTPUT);
-  // digitalWrite(YELLOW_PIN, LOW);
-
-  // pinMode(WHITE_PIN, OUTPUT);
-  // digitalWrite(WHITE_PIN, LOW);
-
-  // pinMode(BLUE_PIN, OUTPUT);
-  // digitalWrite(BLUE_PIN, LOW);
-
   pinMode(BLUE_PIN, OUTPUT);
 
   pinMode(GREEN_PIN, OUTPUT);
@@ -95,20 +78,33 @@ void loop()
   // Read the photoresistor value
   photoresistorValue = analogRead(PHOTO_RESISTOR_PIN);
 
-  // Check the distance and turn on/off the LED lights accordingly
-  Serial.print("Light Level: ");
-  Serial.print(photoresistorValue);
-  Serial.print(",Distance: ");
-  Serial.println(distance);
-
   mpu6050.update();
-  // Print the X, Y and Z
-  Serial.print("Gyro X: ");
-  Serial.print(mpu6050.getGyroX());
-  Serial.print(" | Gyro Y: ");
-  Serial.print(mpu6050.getGyroY());
-  Serial.print(" | Gyro Z: ");
-  Serial.println(mpu6050.getGyroZ());
+  // The photoresistor's measurement is in Ohms because it is a variable resistor.
+  // Its resistance changes based on the amount of light it is exposed to. When the light
+  // intensity increases, the resistance decreases, and vice versa. Therefore, the output
+  // value of the photoresistor represents its resistance in Ohms, which directly
+  // correlates with the light intensity.
+  // Serial.println("");
+  Serial.print("\nLight Level: ");
+  Serial.print(photoresistorValue);
+  Serial.print(" Ohms");
+  Serial.print("\t| Distance: ");
+  Serial.print(distance);
+  Serial.print("cm");
+  Serial.print("\t\t| Temperature: ");
+  Serial.print(mpu6050.getTemp());
+  Serial.println("°C");
+  // Acceleration is measured in units of gravity (g),
+  // where 1g is approximately 9.81(m/(s^2))
+  Serial.print("Acceleration X: ");
+  Serial.print(mpu6050.getAccX());
+  Serial.print("g");
+  Serial.print("\t| Acceleration Y: ");
+  Serial.print(mpu6050.getAccY());
+  Serial.print("g");
+  Serial.print("\t| Acceleration Z: ");
+  Serial.print(mpu6050.getAccZ());
+  Serial.println("g");
 
   // Colour initialisation
   setColor(0, 0, 0);
@@ -192,6 +188,7 @@ void loop()
 
     Serial.println("Rover Separation Completed");
   }
+  Serial.println("=====================================================================================");
 
   delay(1000);
 }
