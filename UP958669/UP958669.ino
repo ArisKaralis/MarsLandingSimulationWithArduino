@@ -9,15 +9,14 @@ MPU6050 mpu6050(Wire);
 #define ECHO_PIN 4
 
 // Define pins for LED lights
-
 #define BLUE_PIN 7
 #define GREEN_PIN 8
 #define RED_PIN 9
 
 // Define pin for buzzer
 #define BUZZER_PIN 2
-// Define constants for distance thresholds
 
+// Define constants for distance thresholds
 #define Parachute_Deploy 200           // cm
 #define Heat_Shield_Separation 170     // cm
 #define Radar_Lock 123                 // cm
@@ -48,10 +47,13 @@ void setup()
   Serial.begin(9600);
 
   pinMode(BLUE_PIN, OUTPUT);
-
   pinMode(GREEN_PIN, OUTPUT);
-  // Set buzzer pin as output and turn it off initially
   pinMode(RED_PIN, OUTPUT);
+
+  // Set buzzer pin as output and turn it off initially
+  pinMode(BUZZER_PIN, OUTPUT);
+  digitalWrite(BUZZER_PIN, LOW);
+
 
   // Configure the photoresistor pin as an input
   pinMode(PHOTO_RESISTOR_PIN, INPUT);
