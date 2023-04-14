@@ -1,12 +1,14 @@
 #include <MPU6050_tockn.h>
 #include <NewPing.h>
 #include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
 
 MPU6050 mpu6050(Wire);
 
 // Define pins for HC-SR04 sensor
-#define TRIGGER_PIN 3
-#define ECHO_PIN 4
+#define TRIGGER_PIN 10
+#define ECHO_PIN 11
 
 // Define pins for LED lights
 #define BLUE_PIN 7
@@ -26,6 +28,12 @@ MPU6050 mpu6050(Wire);
 
 // Define constants for Photoresistor(photocell)s
 #define PHOTO_RESISTOR_PIN A0
+
+// Define pins for SD card module
+#define SD_CS_PIN 53
+#define SD_MISO_PIN 51
+#define SD_MOSI_PIN 50
+#define SD_SCK_PIN 52
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, Parachute_Deploy);
 
@@ -54,17 +62,29 @@ void setup()
   pinMode(BUZZER_PIN, OUTPUT);
   digitalWrite(BUZZER_PIN, LOW);
 
-
   // Configure the photoresistor pin as an input
   pinMode(PHOTO_RESISTOR_PIN, INPUT);
 
   Wire.begin();
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
+
+  // SD card initialisation
+  Serial.print("Initialising SD card...");
+  if (!SD.begin(SD_CS_PIN)) {
+    Serial.println("initialisation failed!");
+    return;
+  }
+  Serial.println("initialisation done.");
 }
+
 
 void loop()
 {
+
+  
+
+  
 
   // Send a short pulse to trigger the sensor
   digitalWrite(TRIGGER_PIN, HIGH);
@@ -81,13 +101,21 @@ void loop()
   photoresistorValue = analogRead(PHOTO_RESISTOR_PIN);
 
   mpu6050.update();
+  unsigned long currentTime = millis();
+  int hours = (currentTime / 3600000) % 24;
+  int minutes = (currentTime / 60000) % 60;
+  int seconds = (currentTime / 1000) % 60;
+
+  char timestamp[12]; // The buffer for the formatted timestamp
+  sprintf(timestamp, "%02d:%02d:%02d", hours, minutes, seconds);
   // The photoresistor's measurement is in Ohms because it is a variable resistor.
   // Its resistance changes based on the amount of light it is exposed to. When the light
   // intensity increases, the resistance decreases, and vice versa. Therefore, the output
   // value of the photoresistor represents its resistance in Ohms, which directly
   // correlates with the light intensity.
-  // Serial.println("");
-  Serial.print("\nLight Level: ");
+  Serial.print("Timestamp: ");
+  Serial.println(timestamp);
+  Serial.print("Light Level: ");
   Serial.print(photoresistorValue);
   Serial.print(" Ohms");
   Serial.print("\t| Distance: ");
@@ -108,6 +136,8 @@ void loop()
   Serial.print(mpu6050.getAccZ());
   Serial.println("g");
 
+
+
   // Colour initialisation
   setColor(0, 0, 0);
 
@@ -115,8 +145,8 @@ void loop()
   { // Parachute Deployment
     // RGB BLUE
     setColor(0, 0, 255);
-
-    Serial.println("Preparing for Parachute Deployment");
+    Serial.print("Next stage: ");
+    Serial.println("Parachute Deployment");
     // Turn off buzzer
     digitalWrite(BUZZER_PIN, LOW);
   }
@@ -124,9 +154,10 @@ void loop()
   { // Heat Shield Separation
     // TRGB GREEN
     setColor(0, 255, 0);
-
-    Serial.println("Parachute Deployment Completed");
-    Serial.println("Preparing for Heat Shield Separation");
+    Serial.print("Completed stage: ");
+    Serial.println("Parachute Deployment");
+    Serial.print("Next stage: ");
+    Serial.println("Heat Shield Separation");
     // Turn off buzzer
     digitalWrite(BUZZER_PIN, LOW);
   }
@@ -135,8 +166,10 @@ void loop()
     // RGB YELLOW
     setColor(255, 255, 0);
 
-    Serial.println("Heat Shield Separation Completed");
-    Serial.println("Preparing for Radar Lock");
+    Serial.print("Completed stage: ");
+    Serial.println("Heat Shield Separation");
+    Serial.print("Next stage: ");
+    Serial.println("Radar Lock");
     // Turn off buzzer
     digitalWrite(BUZZER_PIN, LOW);
   }
@@ -144,8 +177,11 @@ void loop()
   { // Terrain Relative Navigation
     // RGB WHITE
     setColor(255, 255, 255);
-    Serial.println("Radar Lock Completed");
-    Serial.println("Preparing for Terrain Relative Navigation");
+
+    Serial.print("Completed stage: ");
+    Serial.println("Radar Lock");
+    Serial.print("Next stage: ");
+    Serial.println("Terrain Relative Navigation");
     // Turn off buzzer
     digitalWrite(BUZZER_PIN, LOW);
   }
@@ -154,8 +190,10 @@ void loop()
     // RGB RED
     setColor(255, 0, 0);
 
-    Serial.println("Terrain Relative Navigation Completed");
-    Serial.println("Preparing for Backshell Separation");
+    Serial.print("Completed stage: ");
+    Serial.println("Terrain Relative Navigation");
+    Serial.print("Next stage: ");
+    Serial.println("Backshell Separation");
     // Turn off buzzer
     digitalWrite(BUZZER_PIN, LOW);
   }
@@ -164,8 +202,10 @@ void loop()
     // RGB AQUA
     setColor(0, 255, 255);
 
-    Serial.println("Backshell Separation Completed");
-    Serial.println("Preparing for Rover Separation");
+    Serial.print("Completed stage: ");
+    Serial.println("Backshell Separation");
+    Serial.print("Next stage: ");
+    Serial.println("Rover Separation");
     // Turn off buzzer
     digitalWrite(BUZZER_PIN, LOW);
   }
@@ -188,9 +228,41 @@ void loop()
     delay(3000);                    // delay of 3000 millisecond = 3s
     digitalWrite(BUZZER_PIN, LOW);  // deactivat the buzzer
 
-    Serial.println("Rover Separation Completed");
+    Serial.print("Completed stage: ");
+    Serial.println("Rover Separation");
   }
   Serial.println("=====================================================================================");
 
+   // Open the file to write data to SD card
+  File dataFile = SD.open("data.txt", FILE_WRITE);
+
+  // Check if the file is available for writing
+  if (dataFile) {
+    dataFile.println(timestamp);
+    dataFile.print("Light Level: ");
+    dataFile.print(photoresistorValue);
+    dataFile.println(" Ohms");
+    dataFile.print("Distance: ");
+    dataFile.print(distance);
+    dataFile.println("cm");
+    dataFile.print("Temperature: ");
+    dataFile.print(mpu6050.getTemp());
+    dataFile.println("°C");
+    dataFile.print("Acceleration X: ");
+    dataFile.print(mpu6050.getAccX());
+    dataFile.println("g");
+    dataFile.print("Acceleration Y: ");
+    dataFile.print(mpu6050.getAccY());
+    dataFile.println("g");
+    dataFile.print("Acceleration Z: ");
+    dataFile.print(mpu6050.getAccZ());
+    dataFile.println("g");
+    dataFile.println("==========================");
+    // Close the file after writing
+    dataFile.close();
+  } else {
+    // If the file isn't open, pop up an error
+    Serial.println("Error opening data.txt");
+  }
   delay(1000);
 }
