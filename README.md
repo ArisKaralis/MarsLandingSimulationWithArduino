@@ -1,4 +1,4 @@
-# Mission Control System
+# EDL Control System
 
 This is the Entry, Descent and Landing Control System software for the Mars Landing Simulation project.
 
