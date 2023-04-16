@@ -1,6 +1,6 @@
 # Mission Control System
 
-This is the Mission Control System software for the Mars Rover project.
+This is the Mission Control System software for the Mars Landing Simulation project.
 
 ## Requirements
 
@@ -10,7 +10,10 @@ This is the Mission Control System software for the Mars Rover project.
 - 3 LED lights (red, green, blue)
 - Buzzer
 - Photoresistor(photocell)
+- SD card reader
 - SD card module
+- Install Arduino IDE
+- Install Python
 
 ## Installation
 
@@ -41,7 +44,7 @@ When the rover has landed, the LED lights will cycle through all colors and the 
 
 ## Contributing
 
-Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please submit a pull request.
+Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please create a branch and submit a pull request.
 
 ## License
 
