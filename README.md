@@ -1,6 +1,6 @@
 # Mission Control System
 
-This is the Mission Control System software for the Mars Landing Simulation project.
+This is the Entry, Descent and Landing Control System software for the Mars Landing Simulation project.
 
 ## Requirements
 
