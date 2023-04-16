@@ -76,16 +76,13 @@ void setup()
     return;
   }
   Serial.println("initialisation done.");
+
+  SD.remove("data.txt"); // Remove existing data.txt file if it exists
 }
 
 
 void loop()
-{
-
-  
-
-  
-
+{       
   // Send a short pulse to trigger the sensor
   digitalWrite(TRIGGER_PIN, HIGH);
   delayMicroseconds(10);
