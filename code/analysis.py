@@ -4,6 +4,16 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mpl_dates
 from datetime import datetime
 
+# Define the thresholds for each stage
+stage_thresholds = {
+    "Parachute Deploy": 200,
+    "Heat Shield Separation": (199, 170),
+    "Radar Lock": (169, 123),
+    "Terrain Relative Navigation": (122, 62),
+    "Backshell Separation": (61, 33),
+    "Rover Separation": (32, 10)
+}
+
 # Read the data from the file
 with open("D:\\DATA.TXT", "r", encoding="utf-8") as file:
     data = file.read()
@@ -24,11 +34,29 @@ if matches:
 
         # Write the header row
         csvwriter.writerow(["Timestamp", "Light Level (Ohms)", "Distance (cm)",
-                           "Temperature (°C)", "Acc X (g)", "Acc Y (g)", "Acc Z (g)"])
+                           "Temperature (°C)", "Acc X (g)", "Acc Y (g)", "Acc Z (g)", "Completed Stage", "Next Stage"])
+
+        # Initialize variables for tracking the completed and next stage
+        completed_stage = ""
+        next_stage = "Parachute Deploy"
 
         # Iterate through the matches and write the data to the CSV file
         for match in matches:
-            csvwriter.writerow(match)
+            # Convert the distance value to a float
+            distance = float(match[2])
+
+            # Check if the distance is within the threshold range for the next stage
+            if type(stage_thresholds[next_stage]) == int:
+                if distance >= stage_thresholds[next_stage]:
+                    completed_stage = next_stage
+                    next_stage = list(stage_thresholds.keys())[list(stage_thresholds.values()).index(stage_thresholds[completed_stage])+1]
+            elif type(stage_thresholds[next_stage]) == tuple:
+                if stage_thresholds[next_stage][1] <= distance < stage_thresholds[next_stage][0]:
+                    completed_stage = next_stage
+                    next_stage = list(stage_thresholds.keys())[list(stage_thresholds.values()).index(stage_thresholds[completed_stage])+1]
+
+            # Write the match data and stage information to the CSV file
+            csvwriter.writerow(match + (completed_stage, next_stage))
 
     print("Data has been saved to table.csv.")
 
@@ -47,8 +75,11 @@ if matches:
     acc_x = []
     acc_y = []
     acc_z = []
+    completed_stages = []
+    next_stages = []
     energies = []
     power = []
+
 
     for match in matches:
         # Convert the timestamp string to a datetime object
