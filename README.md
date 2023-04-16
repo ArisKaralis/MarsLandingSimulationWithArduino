@@ -18,7 +18,7 @@ This is the Entry, Descent and Landing Control System software for the Mars Land
 ## Installation
 
 1. Clone this repository
-2. Open `UP958669.ino` in the Arduino IDE
+2. Open `UP958669/UP958669.ino` in the Arduino IDE
 3. Install the necessary libraries:
    - MPU6050_tockn
    - NewPing
