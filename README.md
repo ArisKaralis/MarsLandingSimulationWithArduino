@@ -40,7 +40,7 @@ The different stages of the mission are indicated by the LED lights and buzzer a
 - Backshell Separation: Red LED
 - Rover Separation: Aqua LED
 
-When the rover has landed, the LED lights will cycle through all colors and the buzzer will sound for 3 seconds.
+When the rover has landed, the LED lights will cycle through all colours and the buzzer will sound for 3 seconds.
 
 ## Contributing
 
