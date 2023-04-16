@@ -131,5 +131,7 @@ if matches:
     plt.savefig("mars_landing_data.png")
     
     print("Graphs have been saved to mars_landing_data.png.")
+else:
+    print("No matches found.")
     
     
