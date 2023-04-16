@@ -4,7 +4,7 @@ This is the Mission Control System software for the Mars Rover project.
 
 ## Requirements
 
-- Arduino Uno
+- Arduino MEGA2560
 - MPU6050 gyroscope and accelerometer
 - HC-SR04 ultrasonic distance sensor
 - 3 LED lights (red, green, blue)
