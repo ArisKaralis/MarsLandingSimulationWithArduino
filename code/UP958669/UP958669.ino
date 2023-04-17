@@ -134,6 +134,59 @@ void loop()
   Serial.println("g");
 
 
+  // Open the file to write data to SD card
+  File dataFile = SD.open("data.txt", FILE_WRITE);
+
+  // Check if the file is available for writing
+  if (dataFile) {
+    dataFile.println(timestamp);
+    dataFile.print("Light Level: ");
+    dataFile.print(photoresistorValue);
+    dataFile.println(" Ohms");
+    dataFile.print("Distance: ");
+    dataFile.print(distance);
+    dataFile.println("cm");
+    dataFile.print("Temperature: ");
+    dataFile.print(mpu6050.getTemp());
+    dataFile.println("°C");
+    dataFile.print("Acceleration X: ");
+    dataFile.print(mpu6050.getAccX());
+    dataFile.println("g");
+    dataFile.print("Acceleration Y: ");
+    dataFile.print(mpu6050.getAccY());
+    dataFile.println("g");
+    dataFile.print("Acceleration Z: ");
+    dataFile.print(mpu6050.getAccZ());
+    dataFile.println("g");
+    //Print the stage information
+    if (distance > Parachute_Deploy) {
+      dataFile.println("Next stage: Parachute Deployment");
+    } else if (distance > Heat_Shield_Separation && distance <= Parachute_Deploy) {
+      dataFile.println("Completed stage: Parachute Deployment");
+      dataFile.println("Next stage: Heat Shield Separation");
+    } else if (distance > Radar_Lock && distance <= Heat_Shield_Separation) {
+      dataFile.println("Completed stage: Heat Shield Separation");
+      dataFile.println("Next stage: Radar Lock");
+    } else if (distance > Terrain_Relative_Navigation && distance <= Radar_Lock) {
+      dataFile.println("Completed stage: Radar Lock");
+      dataFile.println("Next stage: Terrain Relative Navigation");
+    } else if (distance > Backshell_Separation && distance <= Terrain_Relative_Navigation) {
+      dataFile.println("Completed stage: Terrain Relative Navigation");
+      dataFile.println("Next stage: Backshell Separation");
+    } else if (distance > Rover_Separation && distance < Backshell_Separation) {
+      dataFile.println("Completed stage: Backshell Separation");
+      dataFile.println("Next stage: Rover Separation");
+    } else if (distance <= Rover_Separation) {
+      dataFile.println("Completed stage: Rover Separation");
+    }
+      dataFile.println("==========================");
+      // Close the file after writing
+      dataFile.close();
+  } else {
+    // If the file isn't open, pop up an error
+    Serial.println("Error opening data.txt");
+  }
+
 
   // Colour initialisation
   setColor(0, 0, 0);
@@ -230,36 +283,6 @@ void loop()
   }
   Serial.println("=====================================================================================");
 
-   // Open the file to write data to SD card
-  File dataFile = SD.open("data.txt", FILE_WRITE);
-
-  // Check if the file is available for writing
-  if (dataFile) {
-    dataFile.println(timestamp);
-    dataFile.print("Light Level: ");
-    dataFile.print(photoresistorValue);
-    dataFile.println(" Ohms");
-    dataFile.print("Distance: ");
-    dataFile.print(distance);
-    dataFile.println("cm");
-    dataFile.print("Temperature: ");
-    dataFile.print(mpu6050.getTemp());
-    dataFile.println("°C");
-    dataFile.print("Acceleration X: ");
-    dataFile.print(mpu6050.getAccX());
-    dataFile.println("g");
-    dataFile.print("Acceleration Y: ");
-    dataFile.print(mpu6050.getAccY());
-    dataFile.println("g");
-    dataFile.print("Acceleration Z: ");
-    dataFile.print(mpu6050.getAccZ());
-    dataFile.println("g");
-    dataFile.println("==========================");
-    // Close the file after writing
-    dataFile.close();
-  } else {
-    // If the file isn't open, pop up an error
-    Serial.println("Error opening data.txt");
-  }
+  
   delay(1000);
 }
