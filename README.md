@@ -45,6 +45,8 @@ The Python code reads the sensor data logged by the Arduino and processes it to 
 
 These visualizations are saved as PNG files for easy sharing and analysis.
 
+The code can be executed via the WOWKI website using the links in the file `WOWKI/wokwi-project.txt `. Note that you need to install the libraries using the link in the file `WOWKI/libraries.txt`.
+
 ## Mission Stages
 
 The Mars Rover telemetry system simulates the following mission stages based on distance thresholds:
