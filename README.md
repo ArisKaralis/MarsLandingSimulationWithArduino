@@ -16,7 +16,7 @@ This project is a simulation of a Mars Landing that gathers data from various se
 
 ## Arduino Connections
 
-![Schematic Diagram](arduino.png)
+![Arduino Connections](arduino.png)
 
 ## Usage
 

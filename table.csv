@@ -1,41 +1,41 @@
-Timestamp,Light Level (Ohms),Distance (cm),Temperature (°C),Acc X (g),Acc Y (g),Acc Z (g),Completed Stage,Next Stage
-00:00:07,775,87.36,23.66,0.00,-0.02,0.97,Radar Lock,Terrain Relative Navigation
-00:00:09,791,88.43,23.52,0.00,-0.02,0.98,Radar Lock,Terrain Relative Navigation
-00:00:10,792,85.75,23.56,0.01,-0.02,0.98,Radar Lock,Terrain Relative Navigation
-00:00:12,793,83.52,23.66,0.01,-0.01,0.97,Radar Lock,Terrain Relative Navigation
-00:00:13,794,83.90,23.71,0.01,-0.01,0.98,Radar Lock,Terrain Relative Navigation
-00:00:14,793,82.83,23.61,0.01,-0.02,0.96,Radar Lock,Terrain Relative Navigation
-00:00:15,794,80.71,23.61,0.01,-0.02,0.98,Radar Lock,Terrain Relative Navigation
-00:00:17,793,78.20,23.61,0.01,-0.01,0.98,Radar Lock,Terrain Relative Navigation
-00:00:18,794,75.97,23.61,0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation
-00:00:19,794,74.09,23.66,0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation
-00:00:20,793,71.28,23.66,0.01,-0.01,0.97,Radar Lock,Terrain Relative Navigation
-00:00:22,795,69.90,23.66,-0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation
-00:00:23,796,69.80,23.75,0.01,-0.02,0.97,Radar Lock,Terrain Relative Navigation
-00:00:24,794,70.86,23.71,0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation
-00:00:26,793,64.79,23.75,0.01,-0.01,0.97,Radar Lock,Terrain Relative Navigation
-00:00:27,792,63.83,23.75,0.00,-0.02,0.97,Radar Lock,Terrain Relative Navigation
-00:00:28,792,61.64,23.85,0.01,-0.02,0.97,Terrain Relative Navigation,Backshell Separation
-00:00:29,781,60.92,23.80,0.01,-0.01,0.97,Terrain Relative Navigation,Backshell Separation
-00:00:31,782,57.76,23.80,-0.00,-0.01,0.97,Terrain Relative Navigation,Backshell Separation
-00:00:32,782,56.35,23.75,0.01,-0.02,0.98,Terrain Relative Navigation,Backshell Separation
-00:00:33,782,54.78,23.89,0.01,-0.02,0.96,Terrain Relative Navigation,Backshell Separation
-00:00:35,783,52.27,23.94,0.00,-0.01,0.97,Terrain Relative Navigation,Backshell Separation
-00:00:36,782,51.93,23.89,0.00,-0.01,0.98,Terrain Relative Navigation,Backshell Separation
-00:00:37,782,49.60,23.85,0.01,-0.01,0.97,Terrain Relative Navigation,Backshell Separation
-00:00:38,780,45.04,23.94,0.00,-0.02,0.97,Terrain Relative Navigation,Backshell Separation
-00:00:40,759,41.23,23.85,0.01,-0.02,0.98,Terrain Relative Navigation,Backshell Separation
-00:00:41,761,40.99,23.94,0.01,-0.02,0.98,Terrain Relative Navigation,Backshell Separation
-00:00:42,759,38.48,23.89,0.01,-0.01,0.98,Terrain Relative Navigation,Backshell Separation
-00:00:43,760,34.68,23.89,0.01,-0.01,0.97,Terrain Relative Navigation,Backshell Separation
-00:00:45,755,31.66,23.99,0.00,-0.01,0.97,Backshell Separation,Rover Separation
-00:00:46,762,29.74,23.85,0.01,-0.01,0.98,Backshell Separation,Rover Separation
-00:00:47,760,28.33,23.89,0.01,-0.02,0.97,Backshell Separation,Rover Separation
-00:00:49,756,26.38,23.99,0.01,-0.01,0.97,Backshell Separation,Rover Separation
-00:00:50,756,24.49,24.08,0.01,-0.02,0.98,Backshell Separation,Rover Separation
-00:00:51,757,21.57,23.99,0.01,-0.01,0.97,Backshell Separation,Rover Separation
-00:00:52,759,17.94,23.94,0.01,-0.02,0.96,Backshell Separation,Rover Separation
-00:00:54,760,15.92,24.08,0.00,-0.01,0.97,Backshell Separation,Rover Separation
-00:00:55,761,15.19,23.99,0.00,-0.02,0.97,Backshell Separation,Rover Separation
-00:00:56,763,11.11,23.99,0.01,-0.02,0.97,Backshell Separation,Rover Separation
-00:01:12,772,10.15,24.13,0.01,-0.02,0.97,Backshell Separation,Rover Separation
+Timestamp,Light Level (Ohms),Distance (cm),Temperature (°C),Acc X (g),Acc Y (g),Acc Z (g),Completed Stage,Next Stage,Angle (degrees)
+00:00:07,775,87.36,23.66,0.00,-0.02,0.97,Radar Lock,Terrain Relative Navigation,-90.0
+00:00:09,791,88.43,23.52,0.00,-0.02,0.98,Radar Lock,Terrain Relative Navigation,-90.0
+00:00:10,792,85.75,23.56,0.01,-0.02,0.98,Radar Lock,Terrain Relative Navigation,-63.43494882292201
+00:00:12,793,83.52,23.66,0.01,-0.01,0.97,Radar Lock,Terrain Relative Navigation,-45.0
+00:00:13,794,83.90,23.71,0.01,-0.01,0.98,Radar Lock,Terrain Relative Navigation,-45.0
+00:00:14,793,82.83,23.61,0.01,-0.02,0.96,Radar Lock,Terrain Relative Navigation,-63.43494882292201
+00:00:15,794,80.71,23.61,0.01,-0.02,0.98,Radar Lock,Terrain Relative Navigation,-63.43494882292201
+00:00:17,793,78.20,23.61,0.01,-0.01,0.98,Radar Lock,Terrain Relative Navigation,-45.0
+00:00:18,794,75.97,23.61,0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation,-90.0
+00:00:19,794,74.09,23.66,0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation,-90.0
+00:00:20,793,71.28,23.66,0.01,-0.01,0.97,Radar Lock,Terrain Relative Navigation,-45.0
+00:00:22,795,69.90,23.66,-0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation,-90.0
+00:00:23,796,69.80,23.75,0.01,-0.02,0.97,Radar Lock,Terrain Relative Navigation,-63.43494882292201
+00:00:24,794,70.86,23.71,0.00,-0.01,0.97,Radar Lock,Terrain Relative Navigation,-90.0
+00:00:26,793,64.79,23.75,0.01,-0.01,0.97,Radar Lock,Terrain Relative Navigation,-45.0
+00:00:27,792,63.83,23.75,0.00,-0.02,0.97,Radar Lock,Terrain Relative Navigation,-90.0
+00:00:28,792,61.64,23.85,0.01,-0.02,0.97,Terrain Relative Navigation,Backshell Separation,-63.43494882292201
+00:00:29,781,60.92,23.80,0.01,-0.01,0.97,Terrain Relative Navigation,Backshell Separation,-45.0
+00:00:31,782,57.76,23.80,-0.00,-0.01,0.97,Terrain Relative Navigation,Backshell Separation,-90.0
+00:00:32,782,56.35,23.75,0.01,-0.02,0.98,Terrain Relative Navigation,Backshell Separation,-63.43494882292201
+00:00:33,782,54.78,23.89,0.01,-0.02,0.96,Terrain Relative Navigation,Backshell Separation,-63.43494882292201
+00:00:35,783,52.27,23.94,0.00,-0.01,0.97,Terrain Relative Navigation,Backshell Separation,-90.0
+00:00:36,782,51.93,23.89,0.00,-0.01,0.98,Terrain Relative Navigation,Backshell Separation,-90.0
+00:00:37,782,49.60,23.85,0.01,-0.01,0.97,Terrain Relative Navigation,Backshell Separation,-45.0
+00:00:38,780,45.04,23.94,0.00,-0.02,0.97,Terrain Relative Navigation,Backshell Separation,-90.0
+00:00:40,759,41.23,23.85,0.01,-0.02,0.98,Terrain Relative Navigation,Backshell Separation,-63.43494882292201
+00:00:41,761,40.99,23.94,0.01,-0.02,0.98,Terrain Relative Navigation,Backshell Separation,-63.43494882292201
+00:00:42,759,38.48,23.89,0.01,-0.01,0.98,Terrain Relative Navigation,Backshell Separation,-45.0
+00:00:43,760,34.68,23.89,0.01,-0.01,0.97,Terrain Relative Navigation,Backshell Separation,-45.0
+00:00:45,755,31.66,23.99,0.00,-0.01,0.97,Backshell Separation,Rover Separation,-90.0
+00:00:46,762,29.74,23.85,0.01,-0.01,0.98,Backshell Separation,Rover Separation,-45.0
+00:00:47,760,28.33,23.89,0.01,-0.02,0.97,Backshell Separation,Rover Separation,-63.43494882292201
+00:00:49,756,26.38,23.99,0.01,-0.01,0.97,Backshell Separation,Rover Separation,-45.0
+00:00:50,756,24.49,24.08,0.01,-0.02,0.98,Backshell Separation,Rover Separation,-63.43494882292201
+00:00:51,757,21.57,23.99,0.01,-0.01,0.97,Backshell Separation,Rover Separation,-45.0
+00:00:52,759,17.94,23.94,0.01,-0.02,0.96,Backshell Separation,Rover Separation,-63.43494882292201
+00:00:54,760,15.92,24.08,0.00,-0.01,0.97,Backshell Separation,Rover Separation,-90.0
+00:00:55,761,15.19,23.99,0.00,-0.02,0.97,Backshell Separation,Rover Separation,-90.0
+00:00:56,763,11.11,23.99,0.01,-0.02,0.97,Backshell Separation,Rover Separation,-63.43494882292201
+00:01:12,772,10.15,24.13,0.01,-0.02,0.97,Backshell Separation,Rover Separation,-63.43494882292201
