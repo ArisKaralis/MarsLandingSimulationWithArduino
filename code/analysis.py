@@ -27,13 +27,12 @@ def extract_data(data):
     return matches
 
 
-def write_csv(matches, angles, file_name="table.csv"):
+def write_csv(matches, angles, file_name):
     with open(file_name, "w", newline="", encoding="utf-8") as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(["Timestamp", "Light Level (Ohms)", "Distance (cm)",
-                            "Temperature (°C)", "Acc X (g)", "Acc Y (g)", "Acc Z (g)", "Completed Stage", "Next Stage", "Angle (degrees)"])  # Added Angle column
+                            "Temperature (°C)", "Acc X (g)", "Acc Y (g)", "Acc Z (g)", "Completed Stage", "Next Stage", "Angle (degrees)"])
         for i, match in enumerate(matches):
-            # Added angle value to the row
             csvwriter.writerow(match + (angles[i],))
 
 
@@ -107,39 +106,6 @@ def calculate_power_and_energy(light_levels, timestamps):
     return power_kw, energy_kwh
 
 
-# def plot_kw_t_graph(timestamps, power_kw):
-#     fig, ax = plt.subplots(figsize=(12, 6))
-#     ax.plot(timestamps, power_kw)
-#     ax.set_title("Power vs Time")
-#     ax.set_ylabel("Power (kW)")
-#     ax.set_xlabel("Time")
-
-#     ax.xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
-#     plt.xticks(rotation=45)
-
-#     plt.tight_layout()
-#     plt.savefig("kw_t_graph.png")
-#     plt.close(fig)
-#     print("Power vs Time graph saved to kw_t_graph.png.")
-
-
-# def plot_kwh_t_graph(timestamps, energy_kwh):
-#     cumulative_energy_kwh = np.cumsum(energy_kwh)
-
-#     fig, ax = plt.subplots(figsize=(12, 6))
-#     ax.plot(timestamps[1:], cumulative_energy_kwh)
-#     ax.set_title("Cumulative Energy vs Time")
-#     ax.set_ylabel("Energy (kWh)")
-#     ax.set_xlabel("Time")
-
-#     ax.xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
-#     plt.xticks(rotation=45)
-
-#     plt.tight_layout()
-#     plt.savefig("kwh_t_graph.png")
-#     plt.close(fig)
-#     print("Cumulative Energy vs Time graph saved to kwh_t_graph.png.")
-
 def plot_kwh_t_kw_t_graphs(timestamps, energy_kwh, power_kw):
     fig, ax = plt.subplots(2, 1, figsize=(12, 8), sharex=True)
     ax[0].plot(timestamps[1:], energy_kwh)
@@ -152,10 +118,12 @@ def plot_kwh_t_kw_t_graphs(timestamps, energy_kwh, power_kw):
     ax[1].set_xlabel("Time")
 
     ax[1].xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
+
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.savefig("kwh_t_kw_t_graphs.png")
     plt.close(fig)
+    
     print("Cumulative Energy vs Time and Power vs Time graphs saved to kwh_t_kw_t_graphs.png.")
 
 
@@ -167,11 +135,12 @@ def plot_angles_t_graph(timestamps, angles):
     ax.set_xlabel("Time")
 
     ax.xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
-    plt.xticks(rotation=45)
 
+    plt.xticks(rotation=45)
     plt.tight_layout()
     plt.savefig("angle_t_graph.png")
     plt.close(fig)
+
     print("Angle vs Time graph saved to angle_t_graph.png.")
 
 
@@ -180,6 +149,7 @@ def main():
     data = load_data("D:\\DATA.TXT")
     data = normalize_line_endings(data)
     matches = extract_data(data)
+    file_name = "table.csv"
 
     if matches:
         (timestamps, light_levels, distances, temperatures,
@@ -188,15 +158,13 @@ def main():
         power_kw, energy_kwh = calculate_power_and_energy(
             light_levels, timestamps)
 
-        write_csv(matches, angles)
+        write_csv(matches, angles, file_name)
         print("Data has been saved to table.csv.")
 
         # Visualization functions
         plot_main_graphs(timestamps, light_levels, distances,
                          temperatures, acc_x, acc_y, acc_z, angles)
         plot_stage_bar_charts(distances, completed_stages, next_stages)
-        plot_extra_visualizations(
-            timestamps, light_levels, distances, temperatures, acc_x, acc_y, acc_z)
         plot_correlation_matrix(light_levels, distances,
                                 temperatures, acc_x, acc_y, acc_z)
 
@@ -209,7 +177,7 @@ def main():
 
 
 def plot_main_graphs(timestamps, light_levels, distances, temperatures, acc_x, acc_y, acc_z, angles):
-    # Changed the number of subplots to 6
+    
     fig, ax = plt.subplots(4, 1, figsize=(12, 16), sharex=True)
     ax[0].plot(timestamps, light_levels)
     ax[0].set_title("Light Levels")
@@ -231,14 +199,13 @@ def plot_main_graphs(timestamps, light_levels, distances, temperatures, acc_x, a
     ax[3].legend()
 
     ax[3].xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
+
     plt.xticks(rotation=45)
-
     plt.tight_layout()
-    # plt.show()
-
     plt.tight_layout()
     plt.savefig("main_graphs.png")
     plt.close(fig)
+
     print("Main graphs have been saved to main_graphs.png.")
 
 
@@ -258,17 +225,10 @@ def plot_stage_bar_charts(distances, completed_stages, next_stages):
     ax[1].set_ylabel("Counts")
 
     plt.tight_layout()
-    # plt.show()
-
-    plt.tight_layout()
     plt.savefig("stage_bar_charts.png")
     plt.close(fig)
+
     print("Stage bar charts saved to stage_bar_charts.png")
-
-
-def plot_extra_visualizations(timestamps, light_levels, distances, temperatures, acc_x, acc_y, acc_z):
-    # Add any extra visualization functions here
-    pass
 
 
 def plot_correlation_matrix(light_levels, distances, temperatures, acc_x, acc_y, acc_z):
@@ -280,6 +240,7 @@ def plot_correlation_matrix(light_levels, distances, temperatures, acc_x, acc_y,
     plt.title("Correlation Matrix")
     plt.savefig("correlation_matrix.png")
     plt.close()
+
     print("Correlation matrix saved to correlation_matrix.png")
 
 
