@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mpl_dates
 from datetime import datetime
 import warnings
-import pandas as pd
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
+
 
 # Load data from a file with the given file path.
 def load_data(file_path):
@@ -16,11 +16,12 @@ def load_data(file_path):
         data = file.read()
     return data
 
+
 # Normalize line endings in the given data by replacing Windows line endings with Unix line endings.
 def normalize_line_endings(data):
-    """
-    """
+    """ """
     return data.replace("\r\n", "\n")
+
 
 # Extract relevant data from the given data using a regex pattern.
 def extract_data(data):
@@ -31,20 +32,33 @@ def extract_data(data):
 
 # Write the given matches and angles data to a CSV file with the specified file name.
 def write_csv(matches, angles, file_name):
-   with open(file_name, "w", newline="", encoding="utf-8") as csvfile:
+    with open(file_name, "w", newline="", encoding="utf-8") as csvfile:
         csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(["Timestamp", "Light Level (Ohms)", "Distance (cm)",
-                            "Temperature (°C)", "Acc X (g)", "Acc Y (g)", 
-                            "Acc Z (g)", "Completed Stage", "Next Stage", 
-                            "Angle (degrees)"])
+        csvwriter.writerow(
+            [
+                "Timestamp",
+                "Light Level (Ohms)",
+                "Distance (cm)",
+                "Temperature (°C)",
+                "Acc X (m/s²)",
+                "Acc Y (m/s²)",
+                "Acc Z (m/s²)",
+                "Completed Stage",
+                "Next Stage",
+                "Angle (degrees)",
+            ]
+        )
         for i, match in enumerate(matches):
             csvwriter.writerow(match + (angles[i],))
 
-# Calculate the angle in degrees from the given acceleration values ax and ay.
+
+# Calculate the angle in degrees from the given acceleration values ax and ay,
+# using the arctangent function.
 def calculate_angle(a_x, a_y):
     angle = np.arctan2(a_y, a_x)
     angle_degrees = np.degrees(angle)
     return angle_degrees
+
 
 # Process the given matches data and return a tuple of lists for each data type.
 def process_matches(matches):
@@ -58,7 +72,7 @@ def process_matches(matches):
     completed_stages = []
     next_stages = []
     angles = []
-    G = 9.81
+    gravtity = 9.81
 
     for match in matches:
         timestamp = datetime.strptime(match[0], "%H:%M:%S")
@@ -73,32 +87,43 @@ def process_matches(matches):
         temperature = float(match[3])
         temperatures.append(temperature)
 
-        acc_x_val = float(match[4]) * G
+        acc_x_val = float(match[4]) * gravtity
         acc_x.append(acc_x_val)
 
-        acc_y_val = float(match[5]) * G
+        acc_y_val = float(match[5]) * gravtity
         acc_y.append(acc_y_val)
 
-        acc_z_val = float(match[6]) * G
+        acc_z_val = float(match[6]) * gravtity
         acc_z.append(acc_z_val)
 
         completed_stages.append(match[7])
         next_stages.append(match[8])
 
-     # Calculate the angle and append it to the angles list
+        # Calculate the angle and append it to the angles list
         angle = calculate_angle(acc_x_val, acc_y_val)
         angles.append(angle)
 
     # Return tuple
-    return timestamps, light_levels, distances, temperatures, acc_x, acc_y, acc_z, completed_stages, next_stages, angles
+    return (
+        timestamps,
+        light_levels,
+        distances,
+        temperatures,
+        acc_x,
+        acc_y,
+        acc_z,
+        completed_stages,
+        next_stages,
+        angles,
+    )
+
 
 # Calculate power and energy using the given light levels and timestamps.
 def calculate_power_and_energy(light_levels, timestamps):
     efficiency_constant = 0.20
     area = 1
 
-    power_kw = [L * efficiency_constant *
-                area / 1000 for L in light_levels]  # kW
+    power_kw = [L * efficiency_constant * area / 1000 for L in light_levels]  # kW
 
     # Calculate time intervals in hours
     time_intervals_hours = [
@@ -106,9 +131,11 @@ def calculate_power_and_energy(light_levels, timestamps):
         for i in range(len(timestamps) - 1)
     ]
 
-    energy_kwh = [power_kw[i] * time_intervals_hours[i]
-                  for i in range(len(power_kw) - 1)]  # kWh
+    energy_kwh = [
+        power_kw[i] * time_intervals_hours[i] for i in range(len(power_kw) - 1)
+    ]  # kWh
     return power_kw, energy_kwh
+
 
 # Plot and save Cumulative Energy vs Time and Power vs Time graphs using the given timestamps, energy, and power data.
 def plot_kwh_t_kw_t_graphs(timestamps, energy_kwh, power_kw):
@@ -122,14 +149,17 @@ def plot_kwh_t_kw_t_graphs(timestamps, energy_kwh, power_kw):
     ax[1].set_ylabel("Power (kW)")
     ax[1].set_xlabel("Time")
 
-    ax[1].xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
+    ax[1].xaxis.set_major_formatter(mpl_dates.DateFormatter("%H:%M:%S"))
 
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.savefig("kwh_t_kw_t_graphs.png")
     plt.close(fig)
 
-    print("Cumulative Energy vs Time and Power vs Time graphs saved to kwh_t_kw_t_graphs.png.")
+    print(
+        "Cumulative Energy vs Time and Power vs Time graphs saved to kwh_t_kw_t_graphs.png."
+    )
+
 
 # Plot and save Angle vs Time graph using the given timestamps and angles data
 def plot_angles_t_graph(timestamps, angles):
@@ -139,7 +169,7 @@ def plot_angles_t_graph(timestamps, angles):
     ax.set_ylabel("Angle (degrees)")
     ax.set_xlabel("Time")
 
-    ax.xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
+    ax.xaxis.set_major_formatter(mpl_dates.DateFormatter("%H:%M:%S"))
 
     plt.xticks(rotation=45)
     plt.tight_layout()
@@ -157,21 +187,32 @@ def main():
     file_name = "table.csv"
 
     if matches:
-        (timestamps, light_levels, distances, temperatures,
-         acc_x, acc_y, acc_z, completed_stages, next_stages, angles) = process_matches(matches)
+        (
+            timestamps,
+            light_levels,
+            distances,
+            temperatures,
+            acc_x,
+            acc_y,
+            acc_z,
+            completed_stages,
+            next_stages,
+            angles,
+        ) = process_matches(matches)
 
-        power_kw, energy_kwh = calculate_power_and_energy(
-            light_levels, timestamps)
+        power_kw, energy_kwh = calculate_power_and_energy(light_levels, timestamps)
 
         write_csv(matches, angles, file_name)
         print("Data has been saved to table.csv.")
 
         # Visualization functions
-        plot_main_graphs(timestamps, light_levels, distances,
-                         temperatures, acc_x, acc_y, acc_z)
+        plot_main_graphs(
+            timestamps, light_levels, distances, temperatures, acc_x, acc_y, acc_z
+        )
         plot_stage_bar_charts(distances, completed_stages, next_stages)
-        plot_correlation_matrix(light_levels, distances,
-                                temperatures, acc_x, acc_y, acc_z)
+        plot_correlation_matrix(
+            light_levels, distances, temperatures, acc_x, acc_y, acc_z
+        )
 
         plot_kwh_t_kw_t_graphs(timestamps, energy_kwh, power_kw)
 
@@ -180,9 +221,10 @@ def main():
     else:
         print("No data found.")
 
+
 # Plot and save the main graphs using the given data.
 def plot_main_graphs(timestamps, light_levels, distances, temperatures, acc_x, acc_y, acc_z):
-
+    
     fig, ax = plt.subplots(4, 1, figsize=(12, 16), sharex=True)
     ax[0].plot(timestamps, light_levels)
     ax[0].set_title("Light Levels")
@@ -203,7 +245,7 @@ def plot_main_graphs(timestamps, light_levels, distances, temperatures, acc_x, a
     ax[3].set_ylabel("m/s²")
     ax[3].legend()
 
-    ax[3].xaxis.set_major_formatter(mpl_dates.DateFormatter('%H:%M:%S'))
+    ax[3].xaxis.set_major_formatter(mpl_dates.DateFormatter("%H:%M:%S"))
 
     plt.xticks(rotation=45)
     plt.tight_layout()
@@ -213,12 +255,14 @@ def plot_main_graphs(timestamps, light_levels, distances, temperatures, acc_x, a
 
     print("Main graphs have been saved to main_graphs.png.")
 
+
+
 # Plot and save bar charts for completed stages and next stages using the given data.
 def plot_stage_bar_charts(distances, completed_stages, next_stages):
-    completed_stage_counts = {stage: completed_stages.count(
-        stage) for stage in set(completed_stages)}
-    next_stage_counts = {stage: next_stages.count(
-        stage) for stage in set(next_stages)}
+    completed_stage_counts = {
+        stage: completed_stages.count(stage) for stage in set(completed_stages)
+    }
+    next_stage_counts = {stage: next_stages.count(stage) for stage in set(next_stages)}
 
     fig, ax = plt.subplots(1, 2, figsize=(12, 6))
     ax[0].bar(completed_stage_counts.keys(), completed_stage_counts.values())
@@ -235,16 +279,18 @@ def plot_stage_bar_charts(distances, completed_stages, next_stages):
 
     print("Stage bar charts saved to stage_bar_charts.png")
 
+
 # Plot and save the correlation matrix using the given data.
 def plot_correlation_matrix(light_levels, distances, temperatures, acc_x, acc_y, acc_z):
-    data = np.array(
-        [light_levels, distances, temperatures, acc_x, acc_y, acc_z]).T
+    data = np.array([light_levels, distances, temperatures, acc_x, acc_y, acc_z]).T
     corr_matrix = np.corrcoef(data, rowvar=False)
-    sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", xticklabels=[
-                "Light", "Distance", "Temperature", "Acc X",
-                "Acc Y", "Acc Z"], 
-                yticklabels=["Light", "Distance", "Temperature", 
-                             "Acc X", "Acc Y", "Acc Z"])
+    sns.heatmap(
+        corr_matrix,
+        annot=True,
+        cmap="coolwarm",
+        xticklabels=["Light", "Distance", "Temperature", "Acc X", "Acc Y", "Acc Z"],
+        yticklabels=["Light", "Distance", "Temperature", "Acc X", "Acc Y", "Acc Z"],
+    )
     plt.title("Correlation Matrix")
     plt.savefig("correlation_matrix.png")
     plt.close()

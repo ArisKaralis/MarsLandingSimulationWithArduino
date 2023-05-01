@@ -1,0 +1,344 @@
+00:00:07
+Light Level: 704 Ohms
+Distance: 213.96cm
+Temperature: 21.35°C
+Acceleration X: 1.04g
+Acceleration Y: 0.18g
+Acceleration Z: -0.12g
+Next stage: Parachute Deployment
+==========================
+00:00:09
+Light Level: 699 Ohms
+Distance: 210.53cm
+Temperature: 21.35°C
+Acceleration X: 1.05g
+Acceleration Y: 0.13g
+Acceleration Z: -0.14g
+Next stage: Parachute Deployment
+==========================
+00:00:10
+Light Level: 724 Ohms
+Distance: 209.78cm
+Temperature: 21.40°C
+Acceleration X: 1.07g
+Acceleration Y: 0.07g
+Acceleration Z: -0.06g
+Next stage: Parachute Deployment
+==========================
+00:00:11
+Light Level: 719 Ohms
+Distance: 203.06cm
+Temperature: 21.31°C
+Acceleration X: 1.05g
+Acceleration Y: 0.02g
+Acceleration Z: -0.04g
+Next stage: Parachute Deployment
+==========================
+00:00:13
+Light Level: 722 Ohms
+Distance: 200.93cm
+Temperature: 21.35°C
+Acceleration X: 1.00g
+Acceleration Y: 0.06g
+Acceleration Z: -0.08g
+Next stage: Parachute Deployment
+==========================
+00:00:14
+Light Level: 721 Ohms
+Distance: 194.21cm
+Temperature: 21.31°C
+Acceleration X: 1.03g
+Acceleration Y: 0.02g
+Acceleration Z: -0.02g
+Completed stage: Parachute Deployment
+Next stage: Heat Shield Separation
+==========================
+00:00:15
+Light Level: 726 Ohms
+Distance: 186.32cm
+Temperature: 21.40°C
+Acceleration X: 1.10g
+Acceleration Y: -0.01g
+Acceleration Z: -0.04g
+Completed stage: Parachute Deployment
+Next stage: Heat Shield Separation
+==========================
+00:00:17
+Light Level: 735 Ohms
+Distance: 180.28cm
+Temperature: 21.40°C
+Acceleration X: 0.99g
+Acceleration Y: 0.07g
+Acceleration Z: 0.01g
+Completed stage: Parachute Deployment
+Next stage: Heat Shield Separation
+==========================
+00:00:18
+Light Level: 742 Ohms
+Distance: 170.68cm
+Temperature: 21.40°C
+Acceleration X: 1.01g
+Acceleration Y: 0.06g
+Acceleration Z: 0.04g
+Completed stage: Parachute Deployment
+Next stage: Heat Shield Separation
+==========================
+00:00:19
+Light Level: 748 Ohms
+Distance: 161.59cm
+Temperature: 21.35°C
+Acceleration X: 1.13g
+Acceleration Y: 0.05g
+Acceleration Z: -0.00g
+Completed stage: Heat Shield Separation
+Next stage: Radar Lock
+==========================
+00:00:20
+Light Level: 752 Ohms
+Distance: 142.24cm
+Temperature: 21.40°C
+Acceleration X: 1.01g
+Acceleration Y: 0.02g
+Acceleration Z: -0.01g
+Completed stage: Heat Shield Separation
+Next stage: Radar Lock
+==========================
+00:00:22
+Light Level: 754 Ohms
+Distance: 147.76cm
+Temperature: 21.40°C
+Acceleration X: 1.08g
+Acceleration Y: -0.01g
+Acceleration Z: 0.01g
+Completed stage: Heat Shield Separation
+Next stage: Radar Lock
+==========================
+00:00:23
+Light Level: 754 Ohms
+Distance: 142.00cm
+Temperature: 21.45°C
+Acceleration X: 1.07g
+Acceleration Y: -0.00g
+Acceleration Z: 0.07g
+Completed stage: Heat Shield Separation
+Next stage: Radar Lock
+==========================
+00:00:24
+Light Level: 751 Ohms
+Distance: 136.34cm
+Temperature: 21.45°C
+Acceleration X: 1.02g
+Acceleration Y: -0.01g
+Acceleration Z: 0.03g
+Completed stage: Heat Shield Separation
+Next stage: Radar Lock
+==========================
+00:00:25
+Light Level: 758 Ohms
+Distance: 130.99cm
+Temperature: 21.45°C
+Acceleration X: 1.06g
+Acceleration Y: -0.02g
+Acceleration Z: 0.05g
+Completed stage: Heat Shield Separation
+Next stage: Radar Lock
+==========================
+00:00:27
+Light Level: 767 Ohms
+Distance: 123.82cm
+Temperature: 21.40°C
+Acceleration X: 1.06g
+Acceleration Y: -0.03g
+Acceleration Z: 0.06g
+Completed stage: Heat Shield Separation
+Next stage: Radar Lock
+==========================
+00:00:28
+Light Level: 773 Ohms
+Distance: 118.23cm
+Temperature: 21.40°C
+Acceleration X: 1.02g
+Acceleration Y: -0.01g
+Acceleration Z: 0.01g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:29
+Light Level: 780 Ohms
+Distance: 112.68cm
+Temperature: 21.45°C
+Acceleration X: 1.06g
+Acceleration Y: 0.00g
+Acceleration Z: 0.01g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:31
+Light Level: 789 Ohms
+Distance: 107.46cm
+Temperature: 21.45°C
+Acceleration X: 1.02g
+Acceleration Y: 0.02g
+Acceleration Z: -0.07g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:32
+Light Level: 803 Ohms
+Distance: 97.00cm
+Temperature: 21.54°C
+Acceleration X: 1.03g
+Acceleration Y: 0.01g
+Acceleration Z: -0.01g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:33
+Light Level: 812 Ohms
+Distance: 89.11cm
+Temperature: 21.45°C
+Acceleration X: 1.05g
+Acceleration Y: -0.01g
+Acceleration Z: 0.02g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:34
+Light Level: 820 Ohms
+Distance: 79.47cm
+Temperature: 21.49°C
+Acceleration X: 1.09g
+Acceleration Y: -0.04g
+Acceleration Z: 0.06g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:36
+Light Level: 819 Ohms
+Distance: 69.32cm
+Temperature: 21.40°C
+Acceleration X: 1.08g
+Acceleration Y: -0.02g
+Acceleration Z: -0.00g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:37
+Light Level: 815 Ohms
+Distance: 63.90cm
+Temperature: 21.45°C
+Acceleration X: 1.02g
+Acceleration Y: 0.04g
+Acceleration Z: 0.02g
+Completed stage: Radar Lock
+Next stage: Terrain Relative Navigation
+==========================
+00:00:38
+Light Level: 781 Ohms
+Distance: 55.53cm
+Temperature: 21.40°C
+Acceleration X: 1.00g
+Acceleration Y: 0.04g
+Acceleration Z: 0.05g
+Completed stage: Terrain Relative Navigation
+Next stage: Backshell Separation
+==========================
+00:00:40
+Light Level: 725 Ohms
+Distance: 46.37cm
+Temperature: 21.40°C
+Acceleration X: 1.08g
+Acceleration Y: -0.01g
+Acceleration Z: 0.05g
+Completed stage: Terrain Relative Navigation
+Next stage: Backshell Separation
+==========================
+00:00:41
+Light Level: 660 Ohms
+Distance: 40.13cm
+Temperature: 21.40°C
+Acceleration X: 1.00g
+Acceleration Y: 0.01g
+Acceleration Z: 0.03g
+Completed stage: Terrain Relative Navigation
+Next stage: Backshell Separation
+==========================
+00:00:42
+Light Level: 683 Ohms
+Distance: 33.48cm
+Temperature: 21.49°C
+Acceleration X: 1.08g
+Acceleration Y: 0.03g
+Acceleration Z: 0.05g
+Completed stage: Terrain Relative Navigation
+Next stage: Backshell Separation
+==========================
+00:00:43
+Light Level: 735 Ohms
+Distance: 23.70cm
+Temperature: 21.40°C
+Acceleration X: 1.04g
+Acceleration Y: -0.01g
+Acceleration Z: 0.06g
+Completed stage: Backshell Separation
+Next stage: Rover Separation
+==========================
+00:00:45
+Light Level: 732 Ohms
+Distance: 21.78cm
+Temperature: 21.49°C
+Acceleration X: 0.96g
+Acceleration Y: -0.00g
+Acceleration Z: 0.04g
+Completed stage: Backshell Separation
+Next stage: Rover Separation
+==========================
+00:00:46
+Light Level: 732 Ohms
+Distance: 19.45cm
+Temperature: 21.49°C
+Acceleration X: 1.02g
+Acceleration Y: 0.00g
+Acceleration Z: 0.02g
+Completed stage: Backshell Separation
+Next stage: Rover Separation
+==========================
+00:00:47
+Light Level: 729 Ohms
+Distance: 17.01cm
+Temperature: 21.49°C
+Acceleration X: 0.99g
+Acceleration Y: -0.02g
+Acceleration Z: 0.03g
+Completed stage: Backshell Separation
+Next stage: Rover Separation
+==========================
+00:00:48
+Light Level: 724 Ohms
+Distance: 14.03cm
+Temperature: 21.40°C
+Acceleration X: 1.02g
+Acceleration Y: -0.03g
+Acceleration Z: 0.00g
+Completed stage: Backshell Separation
+Next stage: Rover Separation
+==========================
+00:00:50
+Light Level: 711 Ohms
+Distance: 11.35cm
+Temperature: 21.54°C
+Acceleration X: 1.03g
+Acceleration Y: 0.00g
+Acceleration Z: -0.02g
+Completed stage: Backshell Separation
+Next stage: Rover Separation
+==========================
+00:00:51
+Light Level: 714 Ohms
+Distance: 9.23cm
+Temperature: 21.35°C
+Acceleration X: 1.07g
+Acceleration Y: 0.00g
+Acceleration Z: 0.02g
+Completed stage: Rover Separation
+==========================
